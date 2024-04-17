@@ -20,7 +20,8 @@ function Products() {
 
     return (
         <>
-            <Box className='flex justify-center p-3 bg-skin-secondary w-full'>
+            <Box className='flex justify-center p-3
+                bg-skin-card border-b-2 border-b-orange-500 w-full'>
                 <Typography variant='h5'>Productos</Typography>
             </Box>
             <ProductsList products={products}/>

@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box className="flex flex-col min-h-[100dvh] bg-skin-background">
+        <Box className="flex flex-col min-h-[100dvh] bg-skin-card">
           <Container component="div" className="flex flex-col flex-grow items-center p-0" maxWidth="lg">
             <Products/>
           </Container>
