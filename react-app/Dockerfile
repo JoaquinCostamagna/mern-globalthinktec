@@ -3,12 +3,13 @@
 #Eligo una imagen base, en este caso node 20.12.2
 FROM node:20.12.2-bookworm-slim
 
-WORKDIR /app/react-app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 #Primero hago la copia del package.json únicamente para que este paso se guarde en cache y no se ejecute cada vez que se modifique un archivo
-COPY package.json /app/react-app
+COPY package*.json ./
 RUN npm install
 #Luego copio el resto de los archivos
-COPY . /app/react-app/
+COPY . .
 
 EXPOSE 3000
 

@@ -1,23 +1,36 @@
-import { useState } from 'react'
-import './App.css'
+import './App.scss'
+import { Box, Container, ThemeProvider } from '@mui/material'
+import { createTheme, Theme } from '@mui/material/styles'
+import Products from './pages/Products/Products'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const theme: Theme = createTheme({
+    typography: {
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+    },
+  })
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ThemeProvider theme={theme}>
+        <Box className="flex flex-col min-h-[100dvh] bg-skin-background">
+          <Container component="div" className="flex flex-col flex-grow items-center p-0" maxWidth="lg">
+            <Products/>
+          </Container>
+        </Box>
+      </ThemeProvider>
     </>
   )
 }

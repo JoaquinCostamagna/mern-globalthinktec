@@ -2,20 +2,26 @@
   "name": "api-server",
   "version": "1.0.0",
   "description": "Express server app - Prueba Técnica Global Think Technology",
-  "main": "src/app.js",
+  "main": "src/app.ts",
   "scripts": {
-    "start": "npx ts-node src/app.ts",
+    "start": "npx nodemon ./src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joaquin Costamagna",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongoose": "^8.3.2"
+    "mongoose": "^8.3.2",
+    "mongosh": "^2.2.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
 }

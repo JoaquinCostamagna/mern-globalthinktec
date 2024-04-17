@@ -1,14 +1,19 @@
 version: "3"
 services:
   react-app:
+    container_name: react-app
     image: docker-react-app
     stdin_open: true
+    build: ./react-app
     ports:
       - "3000:3000"
     networks:
       - mern-globalthinktec
   api-server:
+    container_name: api-server
     image: docker-api-server
+    restart: always
+    build: ./api-server
     ports:
       - "5000:5000"
     depends_on:
@@ -16,6 +21,7 @@ services:
     networks:
       - mern-globalthinktec
   mongo:
+    container_name: mongo
     image: mongo:latest
     ports:
       - "27017:27017"

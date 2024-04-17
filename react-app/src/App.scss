@@ -1,0 +1,34 @@
+body>div#root {
+    --bg-primary: #ff6138;
+    --bg-secondary: #2194cf;
+    --bg-tertiary: #60992D;
+    --bg-background: #fffffe;
+    --bg-card: #e7e9ea;
+    --bg-paper: #f8f8f8;
+    --bg-data-grid-border: #1b2d453a;
+    --bg-light: #fffffe;
+
+    --text-light: #efefef;
+    --text-dark: #131313;
+    --text-headline: #1c2e62;
+    --text-paragraph: #1b2d45;
+    --text-paragraph-muted: #1b2d4580;
+    --text-secondary: #0163ae;
+    --text-link: #60992D;
+    --text-success: rgb(34 197 94);
+    --text-error: rgb(248 113 113);
+    --text-over-primary: #efefef;
+
+    --toastify-color-info: var(--bg-secondary);
+    --toastify-color-success: rgb(34 197 94);
+    --toastify-color-warning: rgb(251 191 36);
+    --toastify-color-error: rgb(248 113 113);
+    --toastify-color-light: var(--bg-card);
+    --toastify-text-color-light: var(--text-headline);
+}
+
+img,
+video {
+    max-width: 100%;
+    display: block;
+}
