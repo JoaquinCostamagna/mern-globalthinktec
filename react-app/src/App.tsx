@@ -5,7 +5,12 @@ import Products from './pages/Products/Products'
 
 function App() {
 
+  const rootElement = document.getElementById("root");
   const theme: Theme = createTheme({
+    palette: {
+      primary: { main: '#ff6138' },
+      secondary: { main: '#2194cf' },
+    },
     typography: {
       fontFamily: [
         '-apple-system',
@@ -20,6 +25,23 @@ function App() {
         '"Segoe UI Symbol"',
       ].join(','),
     },
+    components: {
+      MuiPopover: {
+        defaultProps: {
+          container: rootElement
+        }
+      },
+      MuiPopper: {
+        defaultProps: {
+          container: rootElement
+        }
+      },
+      MuiDialog: {
+        defaultProps: {
+          container: rootElement,
+        },
+      },
+    }
   })
 
   return (
@@ -27,7 +49,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Box className="flex flex-col min-h-[100dvh] bg-skin-card">
           <Container component="div" className="flex flex-col flex-grow items-center p-0" maxWidth="lg">
-            <Products/>
+            <Products />
           </Container>
         </Box>
       </ThemeProvider>
