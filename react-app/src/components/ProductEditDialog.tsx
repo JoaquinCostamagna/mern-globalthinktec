@@ -23,30 +23,48 @@ type ProductEditDialogProps = {
     onClose: () => void,
 }
 
+/**
+ * Renders a dialog for editing a product.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} props.open - Whether the dialog is open or not.
+ * @param {Function} props.onClose - Callback function to close the dialog.
+ * @param {Product} props.product - The product to edit.
+ * @returns {JSX.Element} The rendered component.
+ */
 function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
 
     const [loading, setLoading] = useState<number>(0);
+    
+    // Form state and methods using react-hook-form
     const { register, handleSubmit, formState: { errors }, watch, reset, control } = useForm({ mode: 'onChange', defaultValues: { ...product } });
+
+    // Context to refresh products list after updating a product
     const refreshProducts = useContext(UpdateProductsContext).refreshProducts;
 
     const onSubmit = async (data: any) => {
+        // Increment Loading state and show loading toast
         setLoading(prev => prev + 1);
         toast.loading('Cargando...', { toastId: 'postProduct'})
         try {
-            console.log(data);
+            // Create params object with necesary data transformations
             const params: Product = {...data, price_ammount: getFloatValue(data.price_ammount)}
-            await axios.post(`/products/updateProduct`, params);
+            // Send request to update product
+            await axios.put(`/products`, params);
+            // Close dialog and refresh products list
             onClose();
             if (refreshProducts) refreshProducts();
+            // Show success toast
             toast.update('postProduct', { render: 'Producto actualizado con éxito', type: 'success', isLoading: false, autoClose: 2000, closeOnClick: true});
         } catch (error) {
-            console.log(error)
+            // Show error toast
             toast.update('postProduct', { render: 'Error al actualizar el producto', type: 'error', isLoading: false, autoClose: 2000, closeOnClick: true});
             // Generic error handling in interceptors
         }
         setLoading(prev => prev - 1);
     }
 
+    // Reset form and close dialog
     const handleClose = () => {
         onClose();
         reset({ ...product });
@@ -57,7 +75,6 @@ function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
             open={open}
             onClose={handleClose}
             fullWidth
-            // className='z-[10000]'
             scroll="body"
         >
             <DialogTitle>Editar Producto</DialogTitle>

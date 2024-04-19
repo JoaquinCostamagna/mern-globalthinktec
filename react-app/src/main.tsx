@@ -6,8 +6,13 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 
+const SERVER_URL = import.meta.env.VITE_BASE_URL;
+const API_PORT = import.meta.env.VITE_API_PORT;
+
+// Axios interceptor to set the base URL of the API
 axios.interceptors.request.use(function (config) {
-  config.baseURL = 'http://localhost:5000'
+  console.log(`${SERVER_URL}${API_PORT}`)
+  config.baseURL = `${SERVER_URL}${API_PORT}`
   return config
 });
 

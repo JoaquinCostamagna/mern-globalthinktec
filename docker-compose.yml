@@ -9,6 +9,9 @@ services:
       - "3000:3000"
     networks:
       - mern-globalthinktec
+    environment:
+      VITE_API_PORT: 5000
+      VITE_BASE_URL: 'http://localhost:'
   api-server:
     image: docker-api-server
     restart: always

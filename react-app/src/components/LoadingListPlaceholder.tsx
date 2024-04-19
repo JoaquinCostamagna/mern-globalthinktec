@@ -2,9 +2,14 @@ import Box from "@mui/material/Box"
 import Skeleton from "@mui/material/Skeleton"
 import Stack from "@mui/material/Stack"
 
+/**
+ * Renders a placeholder component for lists that are loading.
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.count - The number of placeholders to render.
+ * @returns {JSX.Element} The rendered placeholder component.
+ */
 function LoadingListPlaceholder({count}: {count: number}) {
-    // This component is a placeholder for lists that are loading
-    // Further props could be used to specify format and size
     return (
         <Box className='p-5 w-full'>
             <Stack className='divide-y-4 rounded-lg overflow-hidden'>

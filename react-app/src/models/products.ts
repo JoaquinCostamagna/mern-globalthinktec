@@ -1,3 +1,4 @@
+// Definition of the Product type
 export type Product = { 
     _id: string,
     name: string;

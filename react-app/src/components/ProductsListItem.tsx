@@ -11,6 +11,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import ProductEditDialog from './ProductEditDialog';
 
+/**
+ * Renders a single product item.
+ *
+ * @param {Object} props - The component props.
+ * @param {Product} props.product - The product object to display.
+ * @returns {JSX.Element} The rendered product item.
+ */
 function ProductsListItem({ product }: { product: Product }) {
 
     const [showEditDialog, setShowEditDialog] = useState<boolean>(false);
@@ -20,6 +27,7 @@ function ProductsListItem({ product }: { product: Product }) {
         currency: product.price_currency === 'Dollar' ? 'USD' : 'ARS'
     });
 
+    // Custom styled edit icon
     const EditIconTooltip = () => {
         return (
             <IconButton size='small' className='rounded' onClick={()=> setShowEditDialog(true)}>
@@ -43,11 +51,13 @@ function ProductsListItem({ product }: { product: Product }) {
                     </CardContent>
                 </Card>
             </HtmlTooltip>
+            {/* Edit product dialog */}
             <ProductEditDialog product={product} open={showEditDialog} onClose={() => setShowEditDialog(false)} />
         </>
     )
 }
 
+// Custom styled Tooltip component for the edit icon
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }}
         placement='bottom-end'
