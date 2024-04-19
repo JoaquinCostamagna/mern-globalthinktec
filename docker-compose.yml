@@ -1,8 +1,6 @@
 services:
   react-app:
     image: docker-react-app
-    stdin_open: true
-    build: ./react-app
     depends_on:
       - api-server
     ports:
@@ -15,7 +13,6 @@ services:
   api-server:
     image: docker-api-server
     restart: always
-    build: ./api-server
     ports:
       - "5000:5000"
     depends_on:

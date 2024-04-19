@@ -1,0 +1,12 @@
+{
+  "name": "mern-globalthinktec",
+  "version": "1.0.0",
+  "description": "MERN - Prueba Tecnica GlobalThinkTec - Mono Repo",
+  "main": "",
+  "scripts": {
+    "start": "cd react-app && docker build -t docker-react-app . && cd ../api-server && docker build -t docker-api-server . && cd ../ && docker-compose up"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
