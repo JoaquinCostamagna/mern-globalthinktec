@@ -3,6 +3,13 @@ import { Product } from '../models/products';
 import { ProductModel } from '../models/products';
 import OperationalError from '../utils/OperationalError';
 
+/**
+ * Retrieves all products from the database.
+ * 
+ * @param _req - The request object.
+ * @param res - The response object.
+ * @param next - The next function.
+ */
 export const getProducts = async (_req: Request, res: Response, next: NextFunction) => {
     try {
         const products = await ProductModel.find();
@@ -13,6 +20,13 @@ export const getProducts = async (_req: Request, res: Response, next: NextFuncti
     }
 }
 
+/**
+ * Updates a product in the database.
+ * 
+ * @param req - The request object.
+ * @param res - The response object.
+ * @param next - The next function.
+ */
 export const updateProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const product:Product = req.body;

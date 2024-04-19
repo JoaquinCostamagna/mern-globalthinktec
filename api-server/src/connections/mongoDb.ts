@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
 
+/**
+ * The connection string for MongoDB.
+ */
 const connectionString: string = process.env.ME_CONFIG_MONGODB_URL as string;
 
-console.log('Conectando a la Base de Datos');
+console.log('Connecting to DataBase...');
 mongoose.connect(connectionString, {})
     .then((db) => { 
-        console.log(`Conexión a la base de datos establecida con ${db.connection.host}`);
+        console.log(`DataBase conenction established with ${db.connection.host}`);
     })
-    .catch((error) => { console.error(`Error de conexión: ${error}`) });
-
+    .catch((error) => { console.error(`Connection Error: ${error}`) });
 
 export const db = mongoose.connection;

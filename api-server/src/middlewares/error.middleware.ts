@@ -17,10 +17,19 @@ export const errorMiddleware = (
 ) => {
   error.statusCode = error.statusCode || 500;
   error.status = error.status || "error";
+
+  /*
+    Here more error handling logic, like sending an email to the development team, could be added
+  */
+
+  // Create message for logging
   const message = `Error ${error.statusCode}: ${error.message}`;
+  // Log error on console
   console.error(message);
+  // Save error log on database
   const newLog = new LogModel({message: message, level: 'error', timestamp: new Date()});
   newLog.save();
+
   res.status(error.statusCode).send({
     status: error.status,
     message: error.message,

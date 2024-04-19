@@ -23,7 +23,6 @@ function Products() {
     const fetchProducts = async () => {
         setLoading(prev => prev + 1);
         try {
-            console.log('Fetching products')
             const res = await axios.get('/products');
             setProducts(res.data);
         } catch (error) {

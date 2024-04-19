@@ -1,3 +1,4 @@
+// Products Mock Data
 const Products = [
     {
         id: 1,
