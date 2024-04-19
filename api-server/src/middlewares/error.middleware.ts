@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { LogModel } from "../models/logs";
+import OperationalError from "../utils/OperationalError";
 
 /**
  * Error middleware to capture any unhandled error ocurred while processing the request.
@@ -25,3 +26,4 @@ export const errorMiddleware = (
     message: error.message,
   });
 };
+

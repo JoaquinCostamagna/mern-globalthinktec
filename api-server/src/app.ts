@@ -24,8 +24,10 @@ app.use(
 app.use(express.json());
 app.use(loggerMiddleware);
 
+// Routing
 app.use("/", routes);
 
+// Error middleware
 app.use(errorMiddleware)
 
 app.listen(PORT, () => {
