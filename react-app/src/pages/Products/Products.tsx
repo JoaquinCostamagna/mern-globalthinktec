@@ -20,8 +20,7 @@ function Products() {
     const fetchProducts = async () => {
         setLoading(prev => prev + 1);
         try {
-            await sleep(1000);
-            const res = await axios.get('/products');
+            const res = await axios.get('/products/getAll');
             setProducts(res.data);
         } catch (error) {
             // Generic error handling in interceptors
@@ -36,7 +35,7 @@ function Products() {
                 <Typography variant='h5'>Productos</Typography>
             </Box>
             {loading > 0 ?
-                <LoadingListPlaceholder count={10} itemHeight={10}/>
+                <LoadingListPlaceholder count={10}/>
                 :
                 <ProductsList products={products} />
             }

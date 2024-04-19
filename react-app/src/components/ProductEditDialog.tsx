@@ -12,6 +12,7 @@ import TextField from "@mui/material/TextField"
 import { Autocomplete } from "@mui/material"
 import { toast } from 'react-toastify';
 import { sleep } from "../utils/sharedMethods"
+import axios from 'axios';
 
 const currencyOptions = ['Dollar', 'Peso Argentino']
 
@@ -30,7 +31,7 @@ function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
         setLoading(prev => prev + 1);
         toast.loading('Cargando...', { toastId: 'postProduct'})
         try {
-            // await axios.put(`/products/${product.id}`, data);
+            await axios.post(`/products/updateProduct`, data);
             console.log(data);
             await sleep(2000);
             onClose();

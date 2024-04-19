@@ -1,7 +1,5 @@
-version: "3"
 services:
   react-app:
-    container_name: react-app
     image: docker-react-app
     stdin_open: true
     build: ./react-app
@@ -10,7 +8,6 @@ services:
     networks:
       - mern-globalthinktec
   api-server:
-    container_name: api-server
     image: docker-api-server
     restart: always
     build: ./api-server
@@ -20,18 +17,25 @@ services:
       - mongo
     networks:
       - mern-globalthinktec
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/globalthinktec
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_BASICAUTH: false
+      PORT: 5000
   mongo:
-    container_name: mongo
     image: mongo:latest
+    restart: always
     ports:
       - "27017:27017"
     networks:
       - mern-globalthinktec
     volumes:
-      - mongo-data:/data/db
+      - ./api-server/src/connections/init-mongo-db-collections.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      MONGO_INITDB_DATABASE: globalthinktec
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: password
 networks:
   mern-globalthinktec:
     driver: bridge
-volumes:
-  mongo-data:
-    driver: local

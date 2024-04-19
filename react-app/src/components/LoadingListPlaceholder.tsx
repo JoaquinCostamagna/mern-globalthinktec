@@ -2,7 +2,7 @@ import Box from "@mui/material/Box"
 import Skeleton from "@mui/material/Skeleton"
 import Stack from "@mui/material/Stack"
 
-function LoadingListPlaceholder({count, itemHeight}: {count: number, itemHeight: number}) {
+function LoadingListPlaceholder({count}: {count: number}) {
     // This component is a placeholder for lists that are loading
     // Further props could be used to specify format and size
     return (
@@ -10,7 +10,7 @@ function LoadingListPlaceholder({count, itemHeight}: {count: number, itemHeight:
             <Stack className='divide-y-4 rounded-lg overflow-hidden'>
                 {
                     Array.from(new Array(count)).map((_, index: number) => (
-                        <Skeleton key={index} className={`w-full h-[${itemHeight}rem]`} variant='rectangular' animation='wave'/>
+                        <Skeleton key={index} className='w-full h-[10rem]' variant='rectangular' animation='wave'/>
                     ))
                 }
             </Stack>

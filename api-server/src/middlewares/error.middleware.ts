@@ -19,6 +19,7 @@ export const errorMiddleware = async (
 
 const processUnhandledError = (error: any) => {
   // TODO implement error handling
+  console.log(error);
   let statusCode = 500;
   let data = {
     message: "Internal Server Error",
