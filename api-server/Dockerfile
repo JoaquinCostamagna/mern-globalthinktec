@@ -1,18 +1,19 @@
-#Dockerfile para la creación de la imagen de la API
+#Dockerfile to create a production image of the api-server
 
-#Eligo una imagen base, en este caso node 20.12.2
+# Base image selection, I'm using the node image with the version 20.12.2-bookworm-slim because it has a good balance between size and compatibility
 FROM node:20.12.2-bookworm-slim
 
+# Set the working directory to /usr/src/app
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-#Primero hago la copia del package.json únicamente para que este paso se guarde en cache y no se ejecute cada vez que se modifique un archivo
+# Copy the current directory contents into the container at /usr/src/app
+# It is a good practice to copy the package.json and package-lock.json files first, so that the npm install command can be cached
 COPY package*.json ./
 RUN npm install
-#Luego copio el resto de los archivos
+# Copy the rest of the application code
 COPY . .
 
+# Expose the port 5000 and run the server
 EXPOSE 5000
-
-#Arranco el servidor
 CMD ["npm", "start"]
