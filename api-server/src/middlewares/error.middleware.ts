@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { LogModel } from "../models/logs";
 
 /**
  * Error middleware to capture any unhandled error ocurred while processing the request.
@@ -7,29 +8,20 @@ import { NextFunction, Request, Response } from "express";
  * @param res Express HTTP Response
  * @param _next Express Next Function
  */
-export const errorMiddleware = async (
+export const errorMiddleware = (
   error: any,
   _req: Request,
   res: Response,
   _next: NextFunction
 ) => {
-  const { statusCode, data } = processUnhandledError(error);
-  res.status(statusCode).send(data);
+  error.statusCode = error.statusCode || 500;
+  error.status = error.status || "error";
+  const message = `Error ${error.statusCode}: ${error.message}`;
+  console.error(message);
+  const newLog = new LogModel({message: message, level: 'error', timestamp: new Date()});
+  newLog.save();
+  res.status(error.statusCode).send({
+    status: error.status,
+    message: error.message,
+  });
 };
-
-const processUnhandledError = (error: any) => {
-  // TODO implement error handling
-  console.log(error);
-  let statusCode = 500;
-  let data = {
-    message: "Internal Server Error",
-  };
-
-  if (error instanceof Error) {
-    data = {
-      message: error.message,
-    };
-  }
-
-  return { statusCode, data };
-}

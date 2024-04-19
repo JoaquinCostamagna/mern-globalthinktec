@@ -3,6 +3,8 @@ services:
     image: docker-react-app
     stdin_open: true
     build: ./react-app
+    depends_on:
+      - api-server
     ports:
       - "3000:3000"
     networks:

@@ -4,39 +4,43 @@ import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogTitle from "@mui/material/DialogTitle"
 import { Product } from "../models/products"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { NumericFormat } from 'react-number-format'
 import Stack from "@mui/material/Stack"
 import TextField from "@mui/material/TextField"
 import { Autocomplete } from "@mui/material"
 import { toast } from 'react-toastify';
-import { sleep } from "../utils/sharedMethods"
+import { getFloatValue } from "../utils/sharedMethods"
 import axios from 'axios';
+import { UpdateProductsContext } from "../pages/Products/Products"
 
 const currencyOptions = ['Dollar', 'Peso Argentino']
 
 type ProductEditDialogProps = {
     open: boolean,
     product: Product,
-    onClose: () => void
+    onClose: () => void,
 }
 
 function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
 
     const [loading, setLoading] = useState<number>(0);
     const { register, handleSubmit, formState: { errors }, watch, reset, control } = useForm({ mode: 'onChange', defaultValues: { ...product } });
+    const refreshProducts = useContext(UpdateProductsContext).refreshProducts;
 
     const onSubmit = async (data: any) => {
         setLoading(prev => prev + 1);
         toast.loading('Cargando...', { toastId: 'postProduct'})
         try {
-            await axios.post(`/products/updateProduct`, data);
             console.log(data);
-            await sleep(2000);
+            const params: Product = {...data, price_ammount: getFloatValue(data.price_ammount)}
+            await axios.post(`/products/updateProduct`, params);
             onClose();
+            if (refreshProducts) refreshProducts();
             toast.update('postProduct', { render: 'Producto actualizado con éxito', type: 'success', isLoading: false, autoClose: 2000, closeOnClick: true});
         } catch (error) {
+            console.log(error)
             toast.update('postProduct', { render: 'Error al actualizar el producto', type: 'error', isLoading: false, autoClose: 2000, closeOnClick: true});
             // Generic error handling in interceptors
         }

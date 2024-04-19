@@ -12,7 +12,7 @@ function ProductsList({ products }: { products: Product[] | undefined }) {
                     <Stack className='divide-y-4 rounded-lg overflow-hidden'>
                         {
                             products?.map((product: Product) => (
-                                <ProductsListItem key={product.id} product={product} />
+                                <ProductsListItem key={product._id} product={product} />
                             ))
                         }
                     </Stack>

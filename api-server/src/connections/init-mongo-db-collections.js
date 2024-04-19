@@ -83,7 +83,6 @@ const Products = [
 
 // Init mongo db collections
 db.createCollection('products');
-db.createCollection('errors');
 db.createCollection('logs');
 // Mock insert data in database
 // Insert objects from the products mock to the database
