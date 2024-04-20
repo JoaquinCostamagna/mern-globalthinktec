@@ -9,7 +9,7 @@ import OperationalError from "../utils/OperationalError";
  * @param res Express HTTP Response
  * @param _next Express Next Function
  */
-export const errorMiddleware = (
+const errorMiddleware = (
   error: any,
   _req: Request,
   res: Response,
@@ -36,3 +36,4 @@ export const errorMiddleware = (
   });
 };
 
+export default errorMiddleware;

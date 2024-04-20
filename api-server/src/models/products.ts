@@ -6,12 +6,18 @@ const schema = mongoose.Schema;
  * Represents the schema for a product.
  */
 const productSchema = new schema({
-    name: { type: String, required: true },
-    description: { type: String, required: false },
-    image_url: { type: String, required: true },
-    price_ammount: { type: Number, required: true },
-    price_currency: { type: String, required: true, enum: ['Dollar', 'Peso Argentino'] }
-});
+        name: { type: String, required: true, minLength: 3, maxLength: 100},
+        description: { type: String, required: false, maxLength: 500},
+        image_url: { type: String, required: true },
+        price_ammount: { type: Number, required: true },
+        price_currency: { type: String, required: true, enum: ['Dollar', 'Peso Argentino'] }
+    },
+    {
+        timestamps: true,
+        collection: 'products',
+        runValidators: true       
+    },
+);
 
 // Create the ProductModel using the productSchema
 export const ProductModel = mongoose.model<Product>('Product', productSchema);
