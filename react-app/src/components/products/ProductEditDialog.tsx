@@ -3,7 +3,7 @@ import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogTitle from "@mui/material/DialogTitle"
-import { Product } from "../../models/products"
+import { Product, getCurrencyOptions } from "../../models/products"
 import { useContext, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { NumericFormat } from 'react-number-format'
@@ -15,7 +15,7 @@ import { getFloatValue } from "../../utils/sharedMethods"
 import axios from 'axios';
 import { UpdateProductsContext } from "../../pages/Products"
 
-const currencyOptions = ['Dollar', 'Peso Argentino']
+const CURRENCY_OPTIONS = getCurrencyOptions();
 
 type ProductEditDialogProps = {
     open: boolean,
@@ -122,7 +122,7 @@ function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
                             render={({ fieldState: { error }, field: field }) => (
                                 <Autocomplete
                                     {...field}
-                                    options={currencyOptions}
+                                    options={CURRENCY_OPTIONS}
                                     fullWidth
                                     getOptionLabel={(option) => option}
                                     renderInput={(params) =>

@@ -5,5 +5,12 @@ export type Product = {
     description: string;
     image_url: string;
     price_ammount: number;
-    price_currency: 'Dollar' | 'Peso Argentino';
+    price_currency: CURRENCY_OPTIONS;
 }
+
+enum CURRENCY_OPTIONS {
+    Dollar = 'Dollar',
+    'Peso Argentino' = 'Peso Argentino'
+}
+
+export const getCurrencyOptions = () => Object.values(CURRENCY_OPTIONS);

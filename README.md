@@ -50,8 +50,24 @@ Todo lo que es código y documentación se encuentra en inglés.
 Los mensajes de logs, error y commits están en español
 Los nombres de los componentes React y clases están PascalCase
 Los nombres de las variables, funciones y archivos de utilidad están camelCase
-Los nombres de constantes y variables globales están en UPPER_SNAKE_CASE
+Los nombres de constantes y variables de entorno están en UPPER_SNAKE_CASE
 Los nombres de controladores, enrutadores, tests y midlewares estan en "period.separated.case"
+Las variables de entorno se definen en los archivos .env de los respectivos proyectos para desarrollo y en el docker-compose para la build.
+
+### La estructura de los componentes de React es la siguiente:
+1. imports
+2. exports de contexto
+2. constantes
+3. definición de props
+4. componente
+    1. hooks
+    2. manejo de estado
+    3. variables
+    4. effects
+    5. handlers
+    6. funciones
+    7. render
+5. export default del componente
 
 ## Librerías utilizadas
 
