@@ -61,7 +61,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Routes>
           {/* Main container of the app */}
-          <Route path="/" element={<MainContainer/>} >
+          <Route element={<MainContainer/>} >
             {/* Router to products page */}
             <Route path="products" element={<Products />} />
             {/* Router to logs page */}
