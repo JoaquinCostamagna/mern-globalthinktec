@@ -28,7 +28,7 @@ const Products = [
         id: 4,
         name: "Libro: El Alquimista",
         description: "Una inspiradora novela de Paulo Coelho sobre el viaje de autodescubrimiento.",
-        image_url: "https://tienda.planetadelibros.com.ar/cdn/shop/files/Elalquimista.TD_Fte.jpg?v=1698274498",
+        image_url: "https://tienda.planetadelibros.com.ar/cdn/shop/files/Elalquimista.TD_Fte.jpg",
         price_ammount: 20000,
         price_currency: 'Peso Argentino'
     },
@@ -52,7 +52,7 @@ const Products = [
         id: 7,
         name: "Cafetera Nespresso VertuoPlus",
         description: "Máquina de café con tecnología Centrifusion para preparar café espresso y lungo con un solo toque.",
-        image_url: "https://images.pexels.com/photos/8271926/pexels-photo-8271926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        image_url: "https://images.pexels.com/photos/8271926/pexels-photo-8271926.jpeg",
         price_ammount: 150000,
         price_currency: 'Peso Argentino'
     },

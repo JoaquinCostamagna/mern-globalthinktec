@@ -40,8 +40,8 @@ function ProductsListItem({ product }: { product: Product }) {
         <>
             <HtmlTooltip title={<EditIconTooltip />} >
                 <Card className='rounded-none flex'>
-                    <CardMedia component="img" className='max-w-[10rem] aspect-[4/3] object-cover'
-                        image={product.image_url} alt={product.name} />
+                    <CardMedia component="img" loading='lazy' className='max-w-[10rem] aspect-[4/3] object-cover'
+                        image={`${product.image_url}?width=300`} alt={product.name} />
                     <CardContent className=' w-full flex flex-col md:flex-row justify-between'>
                         <Stack>
                             <Typography variant='h5'>{product.name}</Typography>

@@ -22,7 +22,7 @@ function Logs() {
     const fetchLogs = async () => {
         setLoading(prev => prev + 1);
         try {
-            const res = await axios.get('/logs?count=10');
+            const res = await axios.get('/logs?count=20');
             // timestamp transformation from ISO date to Date object
             setLogs(res.data.map((log: Log) => ({...log, timestamp: new Date(log.timestamp)})));
         } catch (error) {
