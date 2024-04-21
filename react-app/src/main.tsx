@@ -8,8 +8,11 @@ import axios from 'axios'
 import handleRequestError from './utils/requestErrorHandler.ts';
 import { BrowserRouter } from 'react-router-dom';
 
-const SERVER_URL = import.meta.env.VITE_BASE_URL;
-const API_PORT = import.meta.env.VITE_API_PORT;
+// Could not find a good way to use import.meta.env when using docker-compose
+// import.meta.env variables are static and defined on build time
+// Docker compose injects environment variables on runtime
+const SERVER_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:';
+const API_PORT = import.meta.env.VITE_API_PORT || '5000';
 
 // Axios interceptor to set the base URL of the API
 axios.interceptors.request.use(function (config) {
