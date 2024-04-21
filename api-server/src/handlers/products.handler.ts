@@ -42,7 +42,7 @@ export const updateProduct = async (req: Request, res: Response, next: NextFunct
     try {
         const product:Product = req.body;
         await ProductModel.updateOne({_id: product._id}, product, {runValidators: true});
-        res.status(200).send(await ProductModel.find());
+        res.status(200).send(await ProductModel.find({_id: product._id}));
     } catch (err: any) {
         const error = new OperationalError(err.message, 400);
         next(error);
