@@ -14,7 +14,7 @@ import Alert from '@mui/material/Alert'
 function ProductsList({ products }: { products: Product[] | undefined }) {
     return (
         <>
-            <Box className='p-5 w-full'>
+            <Box className='w-full'>
                 {/* Conditional rending of products list or info message where the list is empty */}
                 {products?.length ?
                     <Stack className='divide-y-4 rounded-lg overflow-hidden'>

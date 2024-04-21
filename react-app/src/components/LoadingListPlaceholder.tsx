@@ -11,7 +11,7 @@ import Stack from "@mui/material/Stack"
  */
 function LoadingListPlaceholder({count}: {count: number}) {
     return (
-        <Box className='p-5 w-full'>
+        <Box className='w-full'>
             <Stack className='divide-y-4 rounded-lg overflow-hidden'>
                 {
                     Array.from(new Array(count)).map((_, index: number) => (

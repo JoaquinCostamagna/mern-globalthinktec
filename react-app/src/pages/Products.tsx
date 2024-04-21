@@ -5,8 +5,10 @@ import axios from "axios";
 import { Product } from "../models/products";
 import ProductsList from "../components/products/ProductsList";
 import LoadingListPlaceholder from "../components/LoadingListPlaceholder";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
-export const UpdateProductsContext = createContext<{refreshProducts?: ()=> void}>({});
+export const UpdateProductsContext = createContext<{ refreshProducts?: () => void }>({});
 
 /**
  * Renders the Products page.
@@ -33,17 +35,15 @@ function Products() {
 
     return (
         // ContextProvider to avoid props drilling when using fetchProducts callback for successfull product update
-        <UpdateProductsContext.Provider value={{refreshProducts: fetchProducts}}>
-            <Box className='flex justify-center p-3
-                bg-skin-card border-b-2 border-b-[var(--bg-primary)] w-full'>
-                <Typography variant='h5'>Productos</Typography>
-            </Box>
+        <UpdateProductsContext.Provider value={{ refreshProducts: fetchProducts }}>
             {/* Conditional rendering of loading placeholder or products list */}
-            {loading > 0 ?
-                <LoadingListPlaceholder count={10}/>
-                :
-                <ProductsList products={products} />
-            }
+            <Box className='py-5 w-full'>
+                {loading > 0 ?
+                    <LoadingListPlaceholder count={5} />
+                    :
+                    <ProductsList products={products} />
+                }
+            </Box>
 
         </UpdateProductsContext.Provider>
     )
