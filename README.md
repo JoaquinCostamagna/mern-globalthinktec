@@ -1,14 +1,14 @@
-# MERN - Prueba Tecnica GlobalThinkTec
+# MERN - Prueba Tecnica Global Think Technology
 ## mern-globalthinktec
 
 ## Explicación del proyecto
-Este proyecto es una prueba técnica para la empresa GlobalThinkTec, en la cual se pide realizar una consulta y modificación de 'Entidades' utilizando las tecnologías React y Node.js.
+Este proyecto es una prueba técnica para la empresa Global Think Technology, en la cual se pide realizar una consulta y modificación de 'Entidades' utilizando las tecnologías React y Node.js.
 
 Para esta solución utilicé el stack MERN (MongoDB, Express, React y Node.js). Creando archivos docker para cada uno de los servicios, y utilizando docker-compose para levantar los servicios de manera conjunta.
 
 ## Pre-requisitos
 Para poder ejecutar este proyecto, se debe tener instalado Docker y Node en el sistema.
-También debe estar corriendo el servicio de Docker en el sistema.
+Además, debe estar corriendo el servicio de Docker y tener los puertos 3000, 5000 y 27017 libres.
 
 ## Instrucciones de uso
 Para utilizar este proyecto, se debe clonar el repositorio y ejecutar el siguiente comando en la raíz del proyecto:
@@ -17,13 +17,11 @@ Para utilizar este proyecto, se debe clonar el repositorio y ejecutar el siguien
 Este comando creará las imágnes docker y luego levantará los servicios de MongoDB, Express y React en un contenedor docker. 
 Para visualizar la aplicación, se debe acceder a la dirección http://localhost:3000/
 
-También se puede consultar el log de errores e información sobre los servicios ejecutados con el siguiente comando accediendo a http://localhost:5000/logs.
-
-Para ejecutar test de la API se debe ejecutar el siguiente comando en la carpeta 'api-server' del proyecto:
+Para ejecutar test de la API se debe ejecutar el siguiente comando en el directorio 'api-server' del proyecto:
 ```npm run test```
 
 ## Estructura del proyecto
-El proyecto está dividido en dos carpetas principales: 'react-app' y 'api-server'. En la carpeta 'react-app' se encuentra el código de la aplicación frontend React, creada con vite y en la carpeta 'api-server' se encuentra el código de la aplicación backend express.
+El proyecto está dividido en dos directorios principales: 'react-app' y 'api-server'. En el directorio 'react-app' se encuentra el código de la aplicación frontend React, creada con vite y en el directorio 'api-server' se encuentra el código de la aplicación backend express.
 
 En la raíz del proyecto se encuentra el archivo 'docker-compose.yml' que se encarga de levantar los servicios de MongoDB, Express y React, además de el package.json que contiene el script para levantar correctamente los servicios.
 
@@ -46,13 +44,14 @@ En la raíz del proyecto se encuentra el archivo 'docker-compose.yml' que se enc
     - utils: Para funciones de utilidad.
 
 ## Estandar de código
-Todo lo que es código y documentación se encuentra en inglés.
-Los mensajes de logs, error y commits están en español
-Los nombres de los componentes React y clases están PascalCase
-Los nombres de las variables, funciones y archivos de utilidad están camelCase
-Los nombres de constantes y variables de entorno están en UPPER_SNAKE_CASE
-Los nombres de controladores, enrutadores, tests y midlewares estan en "period.separated.case"
-Las variables de entorno se definen en los archivos .env de los respectivos proyectos para desarrollo y en el docker-compose para la build.
+- Todo lo que es código y documentación se encuentra en inglés.
+- Los mensajes de logs, error y commits están en español
+- Los nombres de los directorios están en kebab-case
+- Los nombres de los componentes React y clases están PascalCase
+- Los nombres de las variables, funciones y archivos de utilidad están camelCase
+- Los nombres de constantes y variables de entorno están en UPPER_SNAKE_CASE
+- Los nombres de controladores, enrutadores, tests y midlewares estan en "period.separated.case"
+- Las variables de entorno se definen en los archivos .env de los respectivos proyectos para desarrollo y en el docker-compose para la build.
 
 ### La estructura de los componentes de React es la siguiente:
 1. imports
@@ -90,8 +89,12 @@ Para el backend se utilizó Express con las siguientes librerías:
 - mongodb-memory-server: Para crear una base de datos en memoria para los tests.
 
 ## Posibles mejoras
-- El test del backend se puede mejorar, ya que solo se realizaron pruebas de integración de los endpoints, se pueden agregar pruebas unitarias de los modelos y controladores.
-- Para no extender el alcance de la prueba, no se agregó autenticación a la aplicación. Se podría agregar un sistema de autenticación con JWT para el manejo de sesiones y bcrypt para el almacenamiento de las claves, utilizando un hook del lado del cliente para protejer rutas y un midleware del lado del servidor para controlar el acceso a los endpoints.
+Ninguna aplicación es perfecta, y siempre se pueden realizar mejoras. A continuación detallo algunas mejoras que se podrían realizar para este proyecto:
+
+- El test del backend se puede mejorar, ya que solo se realizaron pruebas de integración de los endpoints. Se pueden agregar pruebas unitarias de los modelos y controladores.
+- Para no extender el alcance de la prueba, no agregué autenticación a la aplicación. Se podría agregar un sistema de autenticación con JWT para el manejo de sesiones y bcrypt para el almacenamiento de las claves, utilizando un hook del lado del cliente para protejer rutas y un midleware del lado del servidor para controlar el acceso a los endpoints.
 - Evité la posibilidad de editar imágenes de los productos para no agregar complejidad a la estructura del proyecto. Sería ideal tener un contenedor de documentos con acceso público, para poder almacenar imágenes y que el cliente pueda acceder directamente al recurso, sin pasar por el servidor.
 - Se podría agregar un sistema de paginación y filtros para las consultas, ya que si se tienen muchos registros, la lista se hará muy larga y puede afectar la experiencia del usuario.
-- Dada la simplicidad del proyecto, se aprovecha la librería de mongoose para las validaciones de los modelos, pero en un proyecto más grande se podría agregar una librería de validación de esquemas como Joi y una capa de servicios para manejar la conexión con la base de datos.
+- Dada la simplicidad del proyecto, aproveché la librería de mongoose y su definición de esquemas para las validaciones de los modelos, pero en un proyecto más grande se podría agregar una librería de validación de esquemas como Joi y una capa de servicios para desacoplar la conexión con la base de datos de los controladores.
+- Los estilos de la aplicación frontend son muy básicos, se aprovecharon los estilos por defecto de la librería de componentes MUI y se agregó tailwindcss para los estilos personalizados. Se podría agregar una librería de estilos como styled-components para tener un mejor manejo de los estilos y componentes.
+- Sólo se agregaron mensajes de error básicos en la aplicación, se podría agregar un sistema de mensajes de error más robusto, con mensajes personalizados para cada error.
