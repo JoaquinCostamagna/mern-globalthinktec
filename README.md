@@ -12,13 +12,15 @@ Además, debe estar corriendo el servicio de Docker y tener los puertos 3000, 80
 
 ## Instrucciones de uso
 Para utilizar este proyecto, se debe clonar el repositorio y ejecutar el siguiente comando en la raíz del proyecto:
-```npm run start```
+- ```npm run start```
 
 Este comando creará las imágnes docker y luego levantará los servicios de MongoDB, Express y React en un contenedor docker. 
 Para visualizar la aplicación, se debe acceder a la dirección http://localhost:3000/
 
-Para ejecutar test de la API se debe ejecutar el siguiente comando en el directorio 'api-server' del proyecto:
-```npm run test```
+Para ejecutar test de la API se deben ejecutar los siguientes comandos:
+    1. ```cd api-server```
+    2. ```npm install```
+    3. ```npm run test```
 
 ## Estructura del proyecto
 El proyecto está dividido en dos directorios principales: 'react-app' y 'api-server'. En el directorio 'react-app' se encuentra el código de la aplicación frontend React, creada con vite y en el directorio 'api-server' se encuentra el código de la aplicación backend express.
