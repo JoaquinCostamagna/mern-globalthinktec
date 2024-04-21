@@ -1,3 +1,7 @@
+/**
+ * Error messages for different request errors.
+ * Centralzed error messages to be used in the request error handler.
+ */
 export const REQUEST_ERROR_MESSAGES = {
     UNAUTHORIZED: 'No autorizado',
     FORBIDDEN: 'Acceso denegado',

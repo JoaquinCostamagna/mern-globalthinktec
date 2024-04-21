@@ -1,8 +1,7 @@
 import { toast } from 'react-toastify';
-import { REQUEST_ERROR_MESSAGES } from '../constants/ErrorMessages';
+import { REQUEST_ERROR_MESSAGES } from '../constants/errorMessages';
 // Generic error handler
 const handleRequestError = (error: any) => {
-    console.log('Error', error);
     if (error.message === 'Network Error') {
         toast.error(REQUEST_ERROR_MESSAGES.NETWORK_ERROR);
     } else if (error.response) {

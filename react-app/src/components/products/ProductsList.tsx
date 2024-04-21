@@ -3,6 +3,7 @@ import { Product } from '../../models/products'
 import ProductsListItem from './ProductsListItem'
 import Stack from '@mui/material/Stack'
 import Alert from '@mui/material/Alert'
+import { PRODUCTS_INFO_MESSAGES } from '../../constants/infoMessages'
 
 /**
  * Renders a list of products.
@@ -26,7 +27,7 @@ function ProductsList({ products }: { products: Product[] | undefined }) {
                     </Stack>
                     :
                     <Alert severity="info">
-                        No hay productos para mostrar
+                        {PRODUCTS_INFO_MESSAGES.NO_RECORDS}
                     </Alert>
                 }
             </Box>

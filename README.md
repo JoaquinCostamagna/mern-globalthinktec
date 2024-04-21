@@ -27,6 +27,32 @@ El proyecto está dividido en dos carpetas principales: 'react-app' y 'api-serve
 
 En la raíz del proyecto se encuentra el archivo 'docker-compose.yml' que se encarga de levantar los servicios de MongoDB, Express y React, además de el package.json que contiene el script para levantar correctamente los servicios.
 
+### Como estructura de directorios para el backend se utilizó:
+- src: Para el código fuente de la aplicación.
+    - connections: Para las conexiones y setup de la base de datos.
+    - controllers: Para los controladores de las rutas.
+    - middlewares: Para los middlewares de logging y errores de la aplicación.
+    - models: Para los modelos y schemas de la base de datos y tipificación de datos en la aplicación.
+    - routes: Para las rutas de la aplicación.
+    - utils: Para funciones de utilidad.
+- \_\_tests\_\_: Para los tests de la aplicación.
+
+### Como estructura de directorios para el frontend se utilizó:
+- src: Para el código fuente de la aplicación.
+    - components: Para los componentes reutilizables de la aplicación.
+    - pages: Para los componentes que representan las páginas de la aplicación.
+    - models: Para las interfaces de los modelos de la aplicación.
+    - constants: Para las constantes de la aplicación, por ejemplo los mensajes que se muestran al usuario.
+    - utils: Para funciones de utilidad.
+
+## Estandar de código
+Todo lo que es código y documentación se encuentra en inglés.
+Los mensajes de logs, error y commits están en español
+Los nombres de los componentes React y clases están PascalCase
+Los nombres de las variables, funciones y archivos de utilidad están camelCase
+Los nombres de constantes y variables globales están en UPPER_SNAKE_CASE
+Los nombres de controladores, enrutadores, tests y midlewares estan en "period.separated.case"
+
 ## Librerías utilizadas
 
 ### Frontend
@@ -47,3 +73,8 @@ Para el backend se utilizó Express con las siguientes librerías:
 - jest y supertest: Para realizar los tests de los endpoints.
 - mongodb-memory-server: Para crear una base de datos en memoria para los tests.
 
+## Posibles mejoras
+- El test del backend se puede mejorar, ya que solo se realizaron pruebas de los endpoints, se pueden agregar pruebas de los modelos y controladores.
+- Para no extender el alcance de la prueba, no se agregó autenticación a la aplicación. Se podría agregar un sistema de autenticación con JWT para el manejo de sesiones y bcrypt para el almacenamiento de las claves, utilizando un hook del lado del cliente para protejer rutas y un midleware del lado del servidor para controlar el acceso a los endpoints.
+- Evité la posibilidad de editar imágenes de los productos para no agregar complejidad a la estructura del proyecto. Sería ideal tener un contenedor de documentos con acceso público, para poder almacenar imágenes y que el cliente pueda acceder directamente al recurso, sin pasar por el servidor.
+- Se podría agregar un sistema de paginación y filtros para las consultas, ya que si se tienen muchos registros, la lista se hará muy larga y puede afectar la experiencia del usuario.
