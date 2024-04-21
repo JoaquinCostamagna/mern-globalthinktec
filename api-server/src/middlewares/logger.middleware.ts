@@ -9,9 +9,10 @@ import { LogModel } from "../models/logs";
 
 const loggerMiddleware = (req: Request, _res: Response, next: NextFunction) => {
     // Create message for logging
-    let message = `[${new Date().toLocaleTimeString()}] | METHOD: ${req.method} | URL: ${req.url}`;
+    let message = `[${new Date().toLocaleTimeString()}] | METHOD: ${req.method} | URL: ${req.path}`;
     if (Object.keys(req.body).length) message += ` | BODY: ${JSON.stringify(req.body)}`;
     if (Object.keys(req.params).length) message += ` | PARAMS: ${JSON.stringify(req.params)}`;
+    if (Object.keys(req.query).length) message += ` | QUERY: ${JSON.stringify(req.query)}`;
     // Log message on console
     console.log(message);
     // Save log to database

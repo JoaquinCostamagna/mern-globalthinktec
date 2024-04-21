@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react"
-import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import axios from "axios";
 import LoadingListPlaceholder from "../components/LoadingListPlaceholder";
 import LogsList from "../components/logs/LogsList";
 import { Log } from "../models/logs";
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-
 /**
  * Renders the Logs page.
  */
@@ -20,10 +16,13 @@ function Logs() {
         fetchLogs();
     }, [])
 
+    /**
+     * Fetches logs from the server and updates the state with the retrieved data.
+     */
     const fetchLogs = async () => {
         setLoading(prev => prev + 1);
         try {
-            const res = await axios.get('/logs');
+            const res = await axios.get('/logs?count=10');
             // timestamp transformation from ISO date to Date object
             setLogs(res.data.map((log: Log) => ({...log, timestamp: new Date(log.timestamp)})));
         } catch (error) {
