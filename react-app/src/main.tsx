@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import handleRequestError from './utils/requestErrorHandler.ts';
+import { BrowserRouter } from 'react-router-dom';
 
 const SERVER_URL = import.meta.env.VITE_BASE_URL;
 const API_PORT = import.meta.env.VITE_API_PORT;
@@ -24,14 +25,16 @@ axios.interceptors.response.use(undefined, error => {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
-    <ToastContainer 
-      position="top-right"
-      theme='colored'
-      autoClose={5000}
-      newestOnTop
-      closeOnClick
-      pauseOnHover
-    />
+    <BrowserRouter>
+      <App />
+      <ToastContainer
+        position="top-right"
+        theme='colored'
+        autoClose={5000}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+      />
+    </BrowserRouter>
   </React.StrictMode>,
 )

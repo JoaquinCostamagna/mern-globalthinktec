@@ -2,6 +2,7 @@ import './App.scss'
 import { Box, Container, ThemeProvider } from '@mui/material'
 import { createTheme, Theme } from '@mui/material/styles'
 import Products from './pages/Products/Products'
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 /**
  * The root component of the application.
@@ -55,6 +56,12 @@ function App() {
         {/* Main container of the app */}
         <Box className="flex flex-col min-h-[100dvh] bg-skin-card">
           <Container component="div" className="flex flex-col flex-grow items-center p-0" maxWidth="lg">
+            <Routes>
+              {/* Router to products page */}
+              <Route path="products" element={<Products />} />
+              {/* Router for any other route, redirects to products */}
+              <Route path="*" element={<Navigate replace to='products' />} />
+            </Routes>
             <Products />
           </Container>
         </Box>
