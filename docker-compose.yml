@@ -23,7 +23,7 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/globalthinktec
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: password
-      ME_CONFIG_BASICAUTH: false
+      ME_CONFIG_BASICAUTH: 'false'
       PORT: 5000
   mongo:
     image: mongo:latest
