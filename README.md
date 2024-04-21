@@ -90,7 +90,8 @@ Para el backend se utilizó Express con las siguientes librerías:
 - mongodb-memory-server: Para crear una base de datos en memoria para los tests.
 
 ## Posibles mejoras
-- El test del backend se puede mejorar, ya que solo se realizaron pruebas de los endpoints, se pueden agregar pruebas de los modelos y controladores.
+- El test del backend se puede mejorar, ya que solo se realizaron pruebas de integración de los endpoints, se pueden agregar pruebas unitarias de los modelos y controladores.
 - Para no extender el alcance de la prueba, no se agregó autenticación a la aplicación. Se podría agregar un sistema de autenticación con JWT para el manejo de sesiones y bcrypt para el almacenamiento de las claves, utilizando un hook del lado del cliente para protejer rutas y un midleware del lado del servidor para controlar el acceso a los endpoints.
 - Evité la posibilidad de editar imágenes de los productos para no agregar complejidad a la estructura del proyecto. Sería ideal tener un contenedor de documentos con acceso público, para poder almacenar imágenes y que el cliente pueda acceder directamente al recurso, sin pasar por el servidor.
 - Se podría agregar un sistema de paginación y filtros para las consultas, ya que si se tienen muchos registros, la lista se hará muy larga y puede afectar la experiencia del usuario.
+- Dada la simplicidad del proyecto, se aprovecha la librería de mongoose para las validaciones de los modelos, pero en un proyecto más grande se podría agregar una librería de validación de esquemas como Joi y una capa de servicios para manejar la conexión con la base de datos.
