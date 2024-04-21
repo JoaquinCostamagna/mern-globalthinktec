@@ -1,8 +1,14 @@
 import './App.scss'
-import { Box, Container, ThemeProvider } from '@mui/material'
+import { lazy } from 'react'
+import { ThemeProvider } from '@mui/material'
 import { createTheme, Theme } from '@mui/material/styles'
-import Products from './pages/Products/Products'
+// import Products from './pages/Products/Products'
 import { Navigate, Route, Routes } from 'react-router-dom';
+import MainContainer from './components/MainContainer';
+
+// Lazy loading / Code splitting of pages components
+const Products = lazy(() => import('./pages/Products'))
+const Logs = lazy(() => import('./pages/Logs'))
 
 /**
  * The root component of the application.
@@ -53,18 +59,17 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        {/* Main container of the app */}
-        <Box className="flex flex-col min-h-[100dvh] bg-skin-card">
-          <Container component="div" className="flex flex-col flex-grow items-center p-0" maxWidth="lg">
-            <Routes>
-              {/* Router to products page */}
-              <Route path="products" element={<Products />} />
-              {/* Router for any other route, redirects to products */}
-              <Route path="*" element={<Navigate replace to='products' />} />
-            </Routes>
-            <Products />
-          </Container>
-        </Box>
+        <Routes>
+          {/* Main container of the app */}
+          <Route path="/" element={<MainContainer/>} >
+            {/* Router to products page */}
+            <Route path="products" element={<Products />} />
+            {/* Router to logs page */}
+            <Route path="logs" element={<Logs/>} />
+            {/* Router for any other route, redirects to products */}
+            <Route path="*" element={<Navigate replace to='products' />} />
+          </Route>
+        </Routes>
       </ThemeProvider>
     </>
   )

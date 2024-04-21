@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Product } from '../models/products';
+import { Product } from '../../models/products';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';

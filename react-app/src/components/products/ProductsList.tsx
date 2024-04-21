@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box'
-import { Product } from '../models/products'
+import { Product } from '../../models/products'
 import ProductsListItem from './ProductsListItem'
 import Stack from '@mui/material/Stack'
 import Alert from '@mui/material/Alert'

@@ -2,9 +2,9 @@ import { useEffect, useState, createContext } from "react"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import axios from "axios";
-import { Product } from "../../models/products";
-import ProductsList from "../../components/ProductsList";
-import LoadingListPlaceholder from "../../components/LoadingListPlaceholder";
+import { Product } from "../models/products";
+import ProductsList from "../components/products/ProductsList";
+import LoadingListPlaceholder from "../components/LoadingListPlaceholder";
 
 export const UpdateProductsContext = createContext<{refreshProducts?: ()=> void}>({});
 

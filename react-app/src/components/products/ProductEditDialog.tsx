@@ -3,7 +3,7 @@ import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogTitle from "@mui/material/DialogTitle"
-import { Product } from "../models/products"
+import { Product } from "../../models/products"
 import { useContext, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { NumericFormat } from 'react-number-format'
@@ -11,9 +11,9 @@ import Stack from "@mui/material/Stack"
 import TextField from "@mui/material/TextField"
 import { Autocomplete } from "@mui/material"
 import { toast } from 'react-toastify';
-import { getFloatValue } from "../utils/sharedMethods"
+import { getFloatValue } from "../../utils/sharedMethods"
 import axios from 'axios';
-import { UpdateProductsContext } from "../pages/Products/Products"
+import { UpdateProductsContext } from "../../pages/Products"
 
 const currencyOptions = ['Dollar', 'Peso Argentino']
 
