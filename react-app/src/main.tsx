@@ -12,7 +12,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import.meta.env variables are static and defined on build time
 // Docker compose injects environment variables on runtime
 const SERVER_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:';
-const API_PORT = import.meta.env.VITE_API_PORT || '5000';
+const API_PORT = import.meta.env.VITE_API_PORT || '8080';
 
 // Axios interceptor to set the base URL of the API
 axios.interceptors.request.use(function (config) {

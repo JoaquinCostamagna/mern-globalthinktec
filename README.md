@@ -8,7 +8,7 @@ Para esta solución utilicé el stack MERN (MongoDB, Express, React y Node.js). 
 
 ## Pre-requisitos
 Para poder ejecutar este proyecto, se debe tener instalado Docker y Node en el sistema.
-Además, debe estar corriendo el servicio de Docker y tener los puertos 3000, 5000 y 27017 libres.
+Además, debe estar corriendo el servicio de Docker y tener los puertos 3000, 8080 y 8081 libres.
 
 ## Instrucciones de uso
 Para utilizar este proyecto, se debe clonar el repositorio y ejecutar el siguiente comando en la raíz del proyecto:
