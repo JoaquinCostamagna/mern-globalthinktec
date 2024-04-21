@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Box from "@mui/material/Box"
 import axios from "axios";
 import LoadingListPlaceholder from "../components/LoadingListPlaceholder";
-import LogsList from "../components/logs/LogsList";
+import LogsList from "../components/LogsList";
 import { Log } from "../models/logs";
 /**
  * Renders the Logs page.
