@@ -4,7 +4,7 @@ import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogTitle from "@mui/material/DialogTitle"
 import { Product, getCurrencyOptions } from "../../models/products"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { NumericFormat } from 'react-number-format'
 import Stack from "@mui/material/Stack"
@@ -41,6 +41,11 @@ function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
 
     // Context to refresh products list after updating a product
     const refreshProducts = useContext(UpdateProductsContext).refreshProducts;
+
+    // Prevent backdrop from scrolling when dialog is open and enable it when closed
+    useEffect(() => {
+        document.body.style.overflow = open ? 'hidden' : 'auto';
+    }, [open])
 
     const onSubmit = async (data: any) => {
         // Increment Loading state and show loading toast
@@ -112,7 +117,7 @@ function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
                         })}
                     />
                     <span className='text-right text-sm mb-2'>{watch('description')?.length || 0} de 500</span>
-                    <Stack className='flex-row gap-2'>
+                    <Stack className='sm:flex-row gap-2'>
                         <Controller
                             name="price_currency"
                             control={control}
@@ -146,8 +151,8 @@ function ProductEditDialog({ open, onClose, product }: ProductEditDialogProps) {
                             }}
                             render={({ fieldState: { error }, field: field }) => (
                                 <NumericFormat
-                                    {...field}
-                                    // inputRef={field.ref}
+                                    value={field.value}
+                                    onChange={field.onChange}
                                     name={field.name}
                                     customInput={TextField}
                                     thousandSeparator='.'
